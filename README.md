@@ -82,6 +82,6 @@ BuildContext adalah objek yang memungkinkan suatu widget mengetahui posisinya da
 
 ## AI Disclosure Tugas 7
 
-### Saya menggunakan Gemini untuk membuatkan roadmap dan workflow pengerjaan tugas 7, serta untuk melakukan pengecekan terhadap kebenaran kode.
+### Saya menggunakan Gemini untuk membuatkan roadmap dan workflow pengerjaan tugas 7, serta untuk melakukan pengecekan terhadap kebenaran kode. (Link : https://share.gemini.google/31XRzdZqsWa7)
 
 ---
