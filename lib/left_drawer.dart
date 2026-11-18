@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myportofolio_mobile/menu.dart'; // Sesuaikan dengan nama package proyekmu
-// TODO: Impor halaman ProjectFormPage jika sudah dibuat (nanti kita aktifkan setelah form dibuat)
+import 'package:myportofolio_mobile/project_form.dart';
+
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -57,7 +58,12 @@ class LeftDrawer extends StatelessWidget {
             leading: const Icon(Icons.add_circle_outline),
             title: const Text('Add Project'),
             onTap: () {
-              // TODO: Navigasi ke ProjectFormPage akan diisi setelah halamannya dibuat
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ProjectFormPage(),
+                ),
+              );
             },
           ),
         ],

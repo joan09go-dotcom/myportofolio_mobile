@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:myportofolio_mobile/project_form.dart';
+import 'package:myportofolio_mobile/left_drawer.dart';
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key});
@@ -29,6 +31,9 @@ class MyHomePage extends StatelessWidget {
         ),
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
+
+      drawer: const LeftDrawer(),
+
       // Body halaman utama dengan padding di sekelilingnya.
       body: SingleChildScrollView(  // Body halaman utama dibungkus SingleChildScrollView untuk mengatasi overflow di layar kecil
         padding: const EdgeInsets.all(16.0),
@@ -142,6 +147,15 @@ class ItemCard extends StatelessWidget {
                 backgroundColor: item.color,
               ),
             );
+
+            if (item.name == "Tambah Proyek") {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ProjectFormPage(),
+                ),
+              );
+            }
         },
         child: Container(
           padding: const EdgeInsets.all(8),
