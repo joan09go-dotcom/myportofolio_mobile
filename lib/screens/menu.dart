@@ -11,8 +11,9 @@ class MyHomePage extends StatelessWidget {
   final String kelas = "PBP E";
 
   final List<ItemHomepage> items = [
-    ItemHomepage("Lihat Proyek", Icons.folder, Colors.indigo.shade600),
-    ItemHomepage("Tambah Proyek", Icons.add_circle, Colors.teal.shade600),
+    ItemHomepage("View Project", Icons.folder, Colors.indigo.shade600),
+    ItemHomepage("Add Project", Icons.add_circle, Colors.teal.shade600),
+    ItemHomepage("Add Education", Icons.school, Colors.deepPurple.shade600),
     ItemHomepage("Logout", Icons.logout, Colors.red.shade700),
   ];
 

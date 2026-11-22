@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:myportofolio_mobile/screens/project_form.dart'; // Impor halaman form
+import 'package:myportofolio_mobile/screens/project_form.dart'; 
+import 'package:myportofolio_mobile/screens/education_form.dart';
 
 class ItemHomepage {
   final String name;
@@ -30,14 +31,21 @@ class ItemCard extends StatelessWidget {
               ),
             );
 
-            if (item.name == "Tambah Proyek") {
+            if (item.name == "Add Project") {
               Navigator.push(
                 context,
                 MaterialPageRoute(
                   builder: (context) => const ProjectFormPage(),
                 ),
               );
-            }
+            } else if (item.name == "Add Education"){
+                Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const EducationFormPage(),
+              ),
+            );
+            }  
         },
         child: Container(
           padding: const EdgeInsets.all(8),
