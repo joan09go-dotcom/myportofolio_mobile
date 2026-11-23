@@ -85,3 +85,53 @@ BuildContext adalah objek yang memungkinkan suatu widget mengetahui posisinya da
 ### Saya menggunakan Gemini untuk membuatkan roadmap dan workflow pengerjaan tugas 7, serta untuk melakukan pengecekan terhadap kebenaran kode. (Link : https://share.gemini.google/31XRzdZqsWa7)
 
 ---
+
+## Pertanyaan Reflektif Tugas 8
+
+### 1.
+
+Navigator.push(), Navigator.pushReplacement(), dan Navigator.pop() berfungsi mengatur rute navigasi yang dikelola oleh Navigator. Navigator.push() menambahkan rute baru ke bagian paling atas stack sehingga rute sebelumnya tetap berada di bawahnya; Saya memakai metode ini di ItemCard (lib/widgets/project_card.dart) dengan kita membuka form melalui menekan tombol widget : "Add Project", "Add Education", dan "Add Experience". Pengguna juga dapat kembali dengan tombol back bawaan perangkat/browser atau Navigator.pop(). Navigator.pop() berfungsi menghapus rute teratas dari stack dan mengembalikan pengguna ke rute yang berada tepat di bawahnya. Sementara itu, Navigator.pushReplacement() berfungsi menggantikan rute yang sedang aktif di bagian atas stack dengan rute baru; pada LeftDrawer, saya menggunakan Navigator.pushReplacement() ke MyHomePage() sehingga rute aktif digantikan langsung ke halaman utama saat berpindah lewat drawer.   
+
+### 2.
+
+Susunan Scaffold, AppBar, dan Drawer membantu menjaga struktur halaman tetap konsisten karena Scaffold menyediakan kerangka dasar yang sama di MyHomePage, ProjectFormPage, EducationFormPage, dan ExperienceFormPage, AppBar mempertahankan judul dan warna di bagian atas layar, serta Drawer (LeftDrawer) menyediakan akses navigasi yang seragam ke berbagai halaman. Contoh penggunaan warna tema portofolio di lebih dari satu halaman adalah warna indigo (Colors.indigo pada AppBar dan tombol simpan form serta ColorScheme.fromSeed(seedColor: Colors.indigo) pada tema aplikasi MyPortfolio).   
+
+### 3.
+
+Tata letak formulir menggunakan Form, SingleChildScrollView, Column, Row, Padding, dan SizedBox dipilih agar seluruh kolom input dan tombol save tersusun terstruktur serta tetap dapat dijangkau pada layar sempit maupun saat keyboard muncul. Widget pengatur jarak seperti Padding dan SizedBox memberi ruang di sekitar widget dan jarak antar komponen agar elemen tidak saling berhimpit, sedangkan widget penggulir seperti SingleChildScrollView memungkinkan konten di scroll secara vertikal ketika tinggi konten melebihi ruang layar yang tersedia atau saat keyboard digital menutupi sebagian layar.
+
+### 4.
+
+GlobalKey<FormState> berfungsi untuk mengakses state dari widget Form untuk memvalidasi dan mengecek kondisi form; fungsi validator pada tiap field memeriksa kesesuaian isian dari input dan mengembalikan pesan error jika tidak valid (atau null jika valid); sedangkan validate() men-trigger seluruh validator di dalam form saat tombol save ditekan dan mengembalikan true hanya jika semua field lolos validasi. Salah satu contoh isian yang ditolak oleh validasi adalah input kosong atau hanya spasi ("   ") pada field wajib (seperti judul/nama atau kolom wajib yang dicek dengan trim().isEmpty), urutan tanggal/tahun yang tidak sesuai, atau format URL yang tidak valid.
+
+Memilih jenis input atau papan ketik saja belum cukup karena pengguna tetap bisa memasukkan spasi saja, mengetik/menempelkan teks di luar batas panjang, memilih tanggal/tahun yang urutannya terbalik, atau memasukkan format yang tidak sesuai aturan domain aplikasi.
+
+---
+
+## Progress Tugas 8
+
+### 18 November
+
+* Menambahkan leftDrawer untuk navigasi menu utama 
+* Menambahkan halaman form dan validasi input    
+* Menghubungkan navigasi drawer dan tombol Add Project ke ProjectFormPage - - * Merapikan struktur direktori sesuai Tutorial 09
+
+### 22 November
+
+* Menambahkan form untuk Education Section lengkap dengan validasi dan dialog    
+* Menambahkan opsi Add Education di drawer dan menghubungkannya ke Education Form    
+* Membuat widget View Education & Add Education dan menghubungkannya ke Education Form 
+
+### 22 November
+
+* Menambahkan form untuk Experience Section dengan validasi dan dialog ringkasan 
+* Menambahkan opsi Add Experience di drawer dan menghubungkannya ke         Experience Form 
+* Membuat widget View Experience dan Add Experience serta menghubungkannya ke Experience Form
+
+---
+
+## AI Disclosure Tugas 8
+
+### Saya menggunakan Gemini untuk membuatkan roadmap dan workflow pengerjaan tugas 8. (Link : https://share.gemini.google/Sm4oso8dN17m)
+
+---

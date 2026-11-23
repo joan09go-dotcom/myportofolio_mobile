@@ -38,7 +38,7 @@ class MyHomePage extends StatelessWidget {
 
       drawer: const LeftDrawer(),
 
-      // Body halaman utama dengan padding di sekelilingnya.
+      // Body halaman utama 
       body: SingleChildScrollView(  // Body halaman utama dibungkus SingleChildScrollView untuk mengatasi overflow di layar kecil
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -56,7 +56,7 @@ class MyHomePage extends StatelessWidget {
 
             const SizedBox(height: 16.0),
 
-            // Bagian tengah: pesan sambutan dan kisi tombol menu portofolio.
+            // Bagian tengah untuk pesan sambutan dan menaampilkan tombol menu portofolio.
             Center(
               child: Column(
                 children: [
@@ -71,14 +71,14 @@ class MyHomePage extends StatelessWidget {
                     ),
                   ),
 
-                  // GridView menampilkan kartu tombol dalam tata letak kisi 3 kolom.
+                  // GridView menampilkan kartu tombol dalam tata letak 3 kolom.
                   GridView.count(
                     primary: false,
                     padding: const EdgeInsets.all(20),
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10,
                     crossAxisCount: 3,
-                    // shrinkWrap agar ukuran kisi menyesuaikan tinggi konten anak.
+                    // shrinkWrap agar ukuran menyesuaikan tinggi konten child.
                     shrinkWrap: true,
                     children: items.map((ItemHomepage item) {
                       return ItemCard(item);
