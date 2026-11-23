@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:myportofolio_mobile/screens/education_form.dart';
 import 'package:myportofolio_mobile/screens/menu.dart';
 import 'package:myportofolio_mobile/screens/project_form.dart';
+import 'package:myportofolio_mobile/screens/education_form.dart';
+import 'package:myportofolio_mobile/screens/experience_form.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -39,7 +40,7 @@ class LeftDrawer extends StatelessWidget {
             ),
           ),
 
-          // Bagian Routing Menu Utama (Home)
+          // Bagian Navigasi ke Halaman Utama (Home)
           ListTile(
             leading: const Icon(Icons.home_outlined),
             title: const Text('Home'),
@@ -53,7 +54,7 @@ class LeftDrawer extends StatelessWidget {
             },
           ),
 
-          // Bagian Routing ke Halaman Tambah Proyek
+          // Bagian Navigasi ke halaman form Add Project
           ListTile(
             leading: const Icon(Icons.add_circle_outline),
             title: const Text('Add Project'),
@@ -67,7 +68,7 @@ class LeftDrawer extends StatelessWidget {
             },
           ),
 
-          // Bagian Routing ke Halaman Tambah Edukasi
+          // Bagian Navigasi ke halaman form Add Education
           ListTile(
             leading: const Icon(Icons.school_outlined),
             title: const Text('Add Education'),
@@ -80,6 +81,21 @@ class LeftDrawer extends StatelessWidget {
               );
             },
           ),
+
+          // Bagian Navigasi ke halaman form Add Experience
+          ListTile(
+            leading: const Icon(Icons.school_outlined),
+            title: const Text('Add Experience'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ExperienceFormPage(),
+                ),
+              );
+            },
+          ),
+
         ],
       ),
     );
