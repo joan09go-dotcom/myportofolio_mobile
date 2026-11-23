@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myportofolio_mobile/screens/project_form.dart'; 
 import 'package:myportofolio_mobile/screens/education_form.dart';
+import 'package:myportofolio_mobile/screens/experience_form.dart';
 
 class ItemHomepage {
   final String name;
@@ -39,13 +40,20 @@ class ItemCard extends StatelessWidget {
                 ),
               );
             } else if (item.name == "Add Education"){
-                Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const EducationFormPage(),
-              ),
-            );
-            }  
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const EducationFormPage(),
+                ),
+              );
+            }  else if (item.name == "Add Experience"){
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ExperienceFormPage(),
+                ),
+              );
+            }
         },
         child: Container(
           padding: const EdgeInsets.all(8),
