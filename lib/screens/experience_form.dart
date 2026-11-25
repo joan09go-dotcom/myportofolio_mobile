@@ -104,9 +104,7 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(
-          child: Text('Add Experience Form'),
-        ),
+        title: const Center(child: Text('Add Experience Form')),
         backgroundColor: Colors.indigo,
         foregroundColor: Colors.white,
       ),
@@ -139,7 +137,6 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                 ),
               ),
 
-              
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 6.0),
                 child: TextFormField(
@@ -161,7 +158,6 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                 ),
               ),
 
-              
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 6.0),
                 child: TextFormField(
@@ -182,7 +178,6 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
                 ),
               ),
 
-              
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 6.0),
                 child: TextFormField(
@@ -250,7 +245,6 @@ class _ExperienceFormPageState extends State<ExperienceFormPage> {
 
               const SizedBox(height: 12.0),
 
-              
               Align(
                 alignment: Alignment.center,
                 child: Padding(

@@ -84,9 +84,9 @@ class _ProjectFormPageState extends State<ProjectFormPage> {
 
     try {
       final created = await context.read<ApiClient>().createProject(
-            newProject,
-            token: token,
-          );
+        newProject,
+        token: token,
+      );
       if (!mounted) {
         return;
       }
@@ -171,9 +171,7 @@ class _ProjectFormPageState extends State<ProjectFormPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(
-          child: Text('Add Project Form'),
-        ),
+        title: const Center(child: Text('Add Project Form')),
         backgroundColor: Colors.indigo,
         foregroundColor: Colors.white,
       ),

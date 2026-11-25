@@ -52,9 +52,7 @@ class ItemCard extends StatelessWidget {
               return;
             }
             navigator.push(
-              MaterialPageRoute(
-                builder: (context) => const ProjectFormPage(),
-              ),
+              MaterialPageRoute(builder: (context) => const ProjectFormPage()),
             );
           } else if (item.name == "Tambah Edukasi") {
             navigator.push(
@@ -78,9 +76,7 @@ class ItemCard extends StatelessWidget {
             await context.read<AuthState>().logout();
             messenger
               ..hideCurrentSnackBar()
-              ..showSnackBar(
-                const SnackBar(content: Text("Berhasil logout.")),
-              );
+              ..showSnackBar(const SnackBar(content: Text("Berhasil logout.")));
           }
         },
         child: Container(

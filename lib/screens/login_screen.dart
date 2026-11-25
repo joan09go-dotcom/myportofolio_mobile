@@ -38,9 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
       ScaffoldMessenger.of(context)
         ..hideCurrentSnackBar()
         ..showSnackBar(
-          SnackBar(
-            content: Text('Login failed (HTTP ${e.statusCode}).'),
-          ),
+          SnackBar(content: Text('Login failed (HTTP ${e.statusCode}).')),
         );
     } finally {
       if (mounted) {

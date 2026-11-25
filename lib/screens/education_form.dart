@@ -75,9 +75,7 @@ class _EducationFormPageState extends State<EducationFormPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(
-          child: Text('Add Education Form'),
-        ),
+        title: const Center(child: Text('Add Education Form')),
         backgroundColor: Colors.indigo,
         foregroundColor: Colors.white,
       ),
@@ -228,7 +226,6 @@ class _EducationFormPageState extends State<EducationFormPage> {
 
               const SizedBox(height: 12.0),
 
-             
               Align(
                 alignment: Alignment.center,
                 child: Padding(
@@ -249,7 +246,9 @@ class _EducationFormPageState extends State<EducationFormPage> {
                           context: context,
                           builder: (context) {
                             return AlertDialog(
-                              title: const Text('Edukasi berhasil ditambahkan!'),
+                              title: const Text(
+                                'Edukasi berhasil ditambahkan!',
+                              ),
                               content: SingleChildScrollView(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
