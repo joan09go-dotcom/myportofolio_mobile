@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:myportofolio_mobile/screens/project_form.dart'; 
 import 'package:myportofolio_mobile/screens/education_form.dart';
 import 'package:myportofolio_mobile/screens/experience_form.dart';
+import 'package:myportofolio_mobile/screens/login_screen.dart';
+import 'package:myportofolio_mobile/screens/project_form.dart';
+import 'package:myportofolio_mobile/screens/project_list_screen.dart';
+import 'package:myportofolio_mobile/services/auth_state.dart';
+import 'package:myportofolio_mobile/widgets/auth_guard.dart';
+import 'package:provider/provider.dart';
 
 class ItemHomepage {
   final String name;
   final IconData icon;
-  final Color color; // Menambahkan properti Color
+  final Color color;
 
   ItemHomepage(this.name, this.icon, this.color);
 }
@@ -19,11 +24,14 @@ class ItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: item.color, // Menerapkan warna custom yang sudah diatur
+      color: item.color,
       borderRadius: BorderRadius.circular(12),
       child: InkWell(
-        onTap: () {
-          ScaffoldMessenger.of(context)
+        onTap: () async {
+          final navigator = Navigator.of(context);
+          final messenger = ScaffoldMessenger.of(context);
+
+          messenger
             ..hideCurrentSnackBar()
             ..showSnackBar(
               SnackBar(
@@ -32,28 +40,48 @@ class ItemCard extends StatelessWidget {
               ),
             );
 
-            if (item.name == "Add Project") {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const ProjectFormPage(),
-                ),
-              );
-            } else if (item.name == "Add Education"){
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const EducationFormPage(),
-                ),
-              );
-            }  else if (item.name == "Add Experience"){
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const ExperienceFormPage(),
-                ),
-              );
+          if (item.name == "Lihat Proyek") {
+            navigator.push(
+              MaterialPageRoute(
+                builder: (context) => const ProjectListScreen(),
+              ),
+            );
+          } else if (item.name == "Tambah Proyek") {
+            final allowed = await ensureLoggedIn(context);
+            if (!allowed) {
+              return;
             }
+            navigator.push(
+              MaterialPageRoute(
+                builder: (context) => const ProjectFormPage(),
+              ),
+            );
+          } else if (item.name == "Tambah Edukasi") {
+            navigator.push(
+              MaterialPageRoute(
+                builder: (context) => const EducationFormPage(),
+              ),
+            );
+          } else if (item.name == "Tambah Pengalaman") {
+            navigator.push(
+              MaterialPageRoute(
+                builder: (context) => const ExperienceFormPage(),
+              ),
+            );
+          } else if (item.name == "Login") {
+            navigator.push<bool>(
+              MaterialPageRoute<bool>(
+                builder: (context) => const LoginScreen(),
+              ),
+            );
+          } else if (item.name == "Logout") {
+            await context.read<AuthState>().logout();
+            messenger
+              ..hideCurrentSnackBar()
+              ..showSnackBar(
+                const SnackBar(content: Text("Berhasil logout.")),
+              );
+          }
         },
         child: Container(
           padding: const EdgeInsets.all(8),

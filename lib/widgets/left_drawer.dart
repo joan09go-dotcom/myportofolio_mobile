@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:myportofolio_mobile/screens/menu.dart';
-import 'package:myportofolio_mobile/screens/project_form.dart';
 import 'package:myportofolio_mobile/screens/education_form.dart';
 import 'package:myportofolio_mobile/screens/experience_form.dart';
+import 'package:myportofolio_mobile/screens/login_screen.dart';
+import 'package:myportofolio_mobile/screens/menu.dart';
+import 'package:myportofolio_mobile/screens/project_form.dart';
+import 'package:myportofolio_mobile/screens/project_list_screen.dart';
+import 'package:myportofolio_mobile/services/auth_state.dart';
+import 'package:myportofolio_mobile/widgets/auth_guard.dart';
+import 'package:provider/provider.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final isLoggedIn = context.watch<AuthState>().isLoggedIn;
+
     return Drawer(
       child: ListView(
         children: [
-          // Bagian Drawer Header
           const DrawerHeader(
             decoration: BoxDecoration(
               color: Colors.indigo,
@@ -39,8 +45,6 @@ class LeftDrawer extends StatelessWidget {
               ],
             ),
           ),
-
-          // Bagian Navigasi ke Halaman Utama (Home)
           ListTile(
             leading: const Icon(Icons.home_outlined),
             title: const Text('Home'),
@@ -53,22 +57,35 @@ class LeftDrawer extends StatelessWidget {
               );
             },
           ),
-
-          // Bagian Navigasi ke halaman form Add Project
           ListTile(
-            leading: const Icon(Icons.add_circle_outline),
-            title: const Text('Add Project'),
+            leading: const Icon(Icons.folder_outlined),
+            title: const Text('Projects List'),
             onTap: () {
               Navigator.push(
                 context,
+                MaterialPageRoute(
+                  builder: (context) => const ProjectListScreen(),
+                ),
+              );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.add_circle_outline),
+            title: const Text('Add Project'),
+            onTap: () async {
+              final navigator = Navigator.of(context);
+              Navigator.pop(context);
+              final allowed = await ensureLoggedIn(context);
+              if (!allowed) {
+                return;
+              }
+              navigator.push(
                 MaterialPageRoute(
                   builder: (context) => const ProjectFormPage(),
                 ),
               );
             },
           ),
-
-          // Bagian Navigasi ke halaman form Add Education
           ListTile(
             leading: const Icon(Icons.school_outlined),
             title: const Text('Add Education'),
@@ -81,10 +98,8 @@ class LeftDrawer extends StatelessWidget {
               );
             },
           ),
-
-          // Bagian Navigasi ke halaman form Add Experience
           ListTile(
-            leading: const Icon(Icons.school_outlined),
+            leading: const Icon(Icons.work_outline),
             title: const Text('Add Experience'),
             onTap: () {
               Navigator.push(
@@ -95,7 +110,36 @@ class LeftDrawer extends StatelessWidget {
               );
             },
           ),
-
+          const Divider(),
+          if (!isLoggedIn)
+            ListTile(
+              leading: const Icon(Icons.login),
+              title: const Text('Login'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push<bool>(
+                  context,
+                  MaterialPageRoute<bool>(
+                    builder: (context) => const LoginScreen(),
+                  ),
+                );
+              },
+            )
+          else
+            ListTile(
+              leading: const Icon(Icons.logout),
+              title: const Text('Logout'),
+              onTap: () async {
+                final messenger = ScaffoldMessenger.of(context);
+                Navigator.pop(context);
+                await context.read<AuthState>().logout();
+                messenger
+                  ..hideCurrentSnackBar()
+                  ..showSnackBar(
+                    const SnackBar(content: Text('Logged out.')),
+                  );
+              },
+            ),
         ],
       ),
     );
