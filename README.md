@@ -122,7 +122,7 @@ Memilih jenis input atau papan ketik saja belum cukup karena pengguna tetap bisa
 * Menambahkan opsi Add Education di drawer dan menghubungkannya ke Education Form    
 * Membuat widget View Education & Add Education dan menghubungkannya ke Education Form 
 
-### 22 November
+### 23 November
 
 * Menambahkan form untuk Experience Section dengan validasi dan dialog ringkasan 
 * Menambahkan opsi Add Experience di drawer dan menghubungkannya ke         Experience Form 
